@@ -1,0 +1,82 @@
+[
+  {
+    "building_id": "ICT",
+    "name": "Information and Communications Technology",
+    "location": [0, 0],
+    "rooms": [
+      {
+        "room_id": "ICT-121",
+        "capacity": 120,
+        "room_type": "lecture"
+      },
+      {
+        "room_id": "ICT-203",
+        "capacity": 40,
+        "room_type": "lab"
+      }
+    ]
+  },
+  {
+    "building_id": "ENG",
+    "name": "Engineering Block",
+    "location": [2, 3],
+    "rooms": [
+      {
+        "room_id": "ENG-101",
+        "capacity": 200,
+        "room_type": "lecture"
+      },
+      {
+        "room_id": "ENG-215",
+        "capacity": 35,
+        "room_type": "lab"
+      }
+    ]
+  },
+  {
+    "building_id": "SCI",
+    "name": "Science A",
+    "location": [4, 1],
+    "rooms": [
+      {
+        "room_id": "SCI-110",
+        "capacity": 80,
+        "room_type": "lecture"
+      },
+      {
+        "room_id": "SCI-220",
+        "capacity": 25,
+        "room_type": "office"
+      }
+    ]
+  },
+  {
+    "building_id": "LIB",
+    "name": "Library",
+    "location": [1, 5],
+    "rooms": [
+      {
+        "room_id": "LIB-001",
+        "capacity": 60,
+        "room_type": "study"
+      },
+      {
+        "room_id": "LIB-210",
+        "capacity": 20,
+        "room_type": "meeting"
+      }
+    ]
+  },
+  {
+    "building_id": "GYM",
+    "name": "Campus Gym",
+    "location": [6, 2],
+    "rooms": [
+      {
+        "room_id": "GYM-100",
+        "capacity": 150,
+        "room_type": "event"
+      }
+    ]
+  }
+]
