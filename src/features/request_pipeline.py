@@ -1,25 +1,23 @@
-"""FIFO incoming request processing feature skeleton."""
+"""FIFO incoming request processing pipeline skeleton."""
 
-from src.interfaces import RequestPipelineProtocol
-from src.models.campus import IncomingRequest
-from src.structures.fifo_queue import IncomingRequestQueue
+from typing import Any
 
 
-class RequestPipeline(RequestPipelineProtocol):
+class RequestPipeline:
     """Coordinates FIFO processing for incoming requests."""
 
-    def __init__(self, queue: IncomingRequestQueue) -> None:
-        """Create the request pipeline with its FIFO queue dependency."""
+    def __init__(self) -> None:
+        """Initialize request pipeline storage."""
         raise NotImplementedError
 
-    def submit(self, request: IncomingRequest) -> None:
-        """Add an incoming request to the FIFO queue."""
+    def enqueue(self, request: Any) -> None:
+        """Add a request to the back of the FIFO pipeline."""
         raise NotImplementedError
 
-    def process_next(self) -> IncomingRequest | None:
-        """Remove and return the oldest pending incoming request."""
+    def dequeue(self) -> Any | None:
+        """Remove and return the oldest request in the FIFO pipeline."""
         raise NotImplementedError
 
-    def pending_count(self) -> int:
-        """Return the number of requests waiting to be processed."""
+    def process_next(self) -> Any | None:
+        """Process and return the oldest pending request."""
         raise NotImplementedError

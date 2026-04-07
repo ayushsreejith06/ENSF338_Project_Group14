@@ -1,11 +1,20 @@
-"""Shared domain models for the campus system.
+"""Shared data models for the campus navigation and event system.
 
-These dataclasses are intentionally logic-light so feature modules can depend
-on them without pulling in UI, demo, or persistence code.
+These models are intentionally logic-light. Feature modules may import them,
+but model classes must not import feature, structure, demo, or I/O modules.
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from typing import Any
+
+
+@dataclass(slots=True)
+class Room:
+    """A room that can be searched and booked for events."""
+
+    room_id: str
+    capacity: int
+    room_type: str
 
 
 @dataclass(slots=True)
@@ -14,38 +23,8 @@ class Building:
 
     building_id: str
     name: str
-    aliases: list[str] = field(default_factory=list)
-
-
-@dataclass(slots=True)
-class Room:
-    """A room that can be booked for events."""
-
-    room_id: str
-    building_id: str
-    name: str
-    capacity: int
-    resources: list[str] = field(default_factory=list)
-
-
-@dataclass(slots=True)
-class Resource:
-    """A searchable campus resource such as equipment or room feature."""
-
-    resource_id: str
-    name: str
-    location_id: str
-    tags: list[str] = field(default_factory=list)
-
-
-@dataclass(slots=True)
-class Event:
-    """An event that may be assigned to a room booking."""
-
-    event_id: str
-    title: str
-    organizer: str
-    expected_attendance: int
+    location: tuple[float, float]
+    rooms: list[Room] = field(default_factory=list)
 
 
 @dataclass(slots=True)
@@ -54,35 +33,16 @@ class Booking:
 
     booking_id: str
     room_id: str
-    event: Event
-    start_time: datetime
-    end_time: datetime
-
-
-@dataclass(slots=True)
-class PathResult:
-    """Result of a shortest-path navigation query."""
-
-    building_ids: list[str]
-    total_distance: float
-
-
-@dataclass(slots=True)
-class ServiceRequest:
-    """A priority-based service request."""
-
-    request_id: str
     title: str
-    priority: int
-    created_at: datetime
-    location_id: str | None = None
+    start_time: Any
+    end_time: Any
+    organizer: str
 
 
 @dataclass(slots=True)
-class IncomingRequest:
-    """A FIFO pipeline request before routing to a feature service."""
+class Campus:
+    """Container for shared campus data used by feature services."""
 
-    request_id: str
-    request_type: str
-    payload: dict[str, str]
-    received_at: datetime
+    buildings: dict[str, Building] = field(default_factory=dict)
+    rooms: dict[str, Room] = field(default_factory=dict)
+    bookings: dict[str, Booking] = field(default_factory=dict)

@@ -4,8 +4,9 @@ Feature modules should not read files directly; integrate data loading here.
 """
 
 from pathlib import Path
+from typing import Any
 
-from src.models.campus import Building, Resource, Room
+from src.models.campus import Building, Room
 
 
 class CampusDataRepository:
@@ -23,6 +24,6 @@ class CampusDataRepository:
         """Load campus rooms from storage."""
         raise NotImplementedError
 
-    def load_resources(self) -> list[Resource]:
-        """Load campus resources from storage."""
+    def load_resources(self) -> dict[str, Any]:
+        """Load lookup resources from storage as key-value pairs."""
         raise NotImplementedError

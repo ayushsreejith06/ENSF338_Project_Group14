@@ -1,30 +1,21 @@
 """Optional AVL tree skeleton for the booking index bonus."""
 
-from typing import Generic, TypeVar
+from typing import Any
 
-K = TypeVar("K")
-V = TypeVar("V")
+from src.models.campus import Booking
 
 
-class AVLTree(Generic[K, V]):
-    """Optional balanced binary search tree for indexed lookup."""
+class AVLTree:
+    """Optional balanced booking index keyed by booking time."""
 
     def __init__(self) -> None:
-        """Initialize tree storage."""
+        """Initialize AVL tree storage."""
         raise NotImplementedError
 
-    def insert(self, key: K, value: V) -> None:
-        """Insert or update a key-value pair."""
+    def insert(self, booking: Booking) -> None:
+        """Insert a booking into the AVL tree."""
         raise NotImplementedError
 
-    def delete(self, key: K) -> bool:
-        """Delete a key and return whether it was found."""
-        raise NotImplementedError
-
-    def search(self, key: K) -> V | None:
-        """Return a value by key, or None when missing."""
-        raise NotImplementedError
-
-    def in_order(self) -> list[tuple[K, V]]:
-        """Return key-value pairs in sorted key order."""
+    def search_in_range(self, start_time: Any, end_time: Any) -> list[Booking]:
+        """Return bookings with times inside the requested interval."""
         raise NotImplementedError

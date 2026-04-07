@@ -1,25 +1,21 @@
-"""FIFO queue skeleton for incoming request processing."""
+"""Internal FIFO queue skeleton for incoming request processing."""
 
-from src.models.campus import IncomingRequest
+from typing import Any
 
 
-class IncomingRequestQueue:
-    """First-in, first-out queue for incoming requests."""
+class _IncomingRequestQueue:
+    """Internal first-in, first-out queue for incoming requests."""
 
     def __init__(self) -> None:
         """Initialize FIFO queue storage."""
         raise NotImplementedError
 
-    def enqueue(self, request: IncomingRequest) -> None:
+    def _enqueue(self, request: Any) -> None:
         """Add a request to the back of the queue."""
         raise NotImplementedError
 
-    def dequeue(self) -> IncomingRequest | None:
+    def _dequeue(self) -> Any | None:
         """Remove and return the oldest request."""
-        raise NotImplementedError
-
-    def peek(self) -> IncomingRequest | None:
-        """Return the oldest request without removing it."""
         raise NotImplementedError
 
     def __len__(self) -> int:

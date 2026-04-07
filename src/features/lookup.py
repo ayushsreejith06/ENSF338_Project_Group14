@@ -1,36 +1,23 @@
-"""Fast building, room, and resource lookup feature skeleton."""
+"""Fast hash-table-style lookup service skeleton."""
 
-from src.interfaces import LookupServiceProtocol
-from src.models.campus import Building, Resource, Room
+from typing import Any
 
 
-class LookupService(LookupServiceProtocol):
-    """Hash-table-style lookup service for campus entities."""
+class LookupService:
+    """Stores and retrieves values by string key."""
 
     def __init__(self) -> None:
-        """Initialize lookup indexes."""
+        """Initialize lookup storage."""
         raise NotImplementedError
 
-    def add_building(self, building: Building) -> None:
-        """Register a building for fast lookup."""
+    def insert(self, key: str, value: Any) -> None:
+        """Insert or replace a value by key."""
         raise NotImplementedError
 
-    def add_room(self, room: Room) -> None:
-        """Register a room for fast lookup."""
+    def lookup(self, key: str) -> Any | None:
+        """Return the value for key, or None when the key is missing."""
         raise NotImplementedError
 
-    def add_resource(self, resource: Resource) -> None:
-        """Register a resource for fast lookup."""
-        raise NotImplementedError
-
-    def find_building(self, building_id: str) -> Building | None:
-        """Find a building by ID."""
-        raise NotImplementedError
-
-    def find_room(self, room_id: str) -> Room | None:
-        """Find a room by ID."""
-        raise NotImplementedError
-
-    def find_resources(self, query: str) -> list[Resource]:
-        """Find resources matching a search query."""
+    def delete(self, key: str) -> bool:
+        """Delete a key and return whether it was found."""
         raise NotImplementedError

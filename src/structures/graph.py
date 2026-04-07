@@ -1,28 +1,21 @@
-"""Adjacency-list campus graph skeleton."""
-
-from src.interfaces import CampusMapProtocol
-from src.models.campus import Building
+"""Adjacency-list graph skeleton for campus navigation."""
 
 
-class CampusGraph(CampusMapProtocol):
-    """Campus map backed by an adjacency list."""
+class Graph:
+    """Campus graph using building IDs as nodes."""
 
     def __init__(self) -> None:
-        """Initialize graph storage."""
+        """Initialize adjacency-list graph storage."""
         raise NotImplementedError
 
-    def add_building(self, building: Building) -> None:
-        """Add or replace a building node in the campus graph."""
+    def add_node(self, building_id: str) -> None:
+        """Add a building node to the graph if it is not already present."""
         raise NotImplementedError
 
-    def add_path(self, source_id: str, destination_id: str, distance: float) -> None:
-        """Add a weighted path between two buildings."""
+    def add_edge(self, src: str, dst: str, weight: int) -> None:
+        """Add a weighted edge between two building IDs."""
         raise NotImplementedError
 
-    def neighbors(self, building_id: str) -> list[tuple[str, float]]:
-        """Return neighboring building IDs and edge weights."""
-        raise NotImplementedError
-
-    def get_building(self, building_id: str) -> Building | None:
-        """Return a building by ID, or None when missing."""
+    def shortest_path(self, src: str, dst: str) -> tuple[list[str], int]:
+        """Return the shortest path and total distance from src to dst."""
         raise NotImplementedError

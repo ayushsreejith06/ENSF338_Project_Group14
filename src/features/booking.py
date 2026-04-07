@@ -1,42 +1,33 @@
-"""Room and event booking feature skeleton."""
+"""Room and event booking system skeleton."""
 
-from datetime import datetime
+from typing import Any
 
-from src.interfaces import BookingServiceProtocol
-from src.models.campus import Booking, Event
-from src.structures.booking_index import BookingIndex
+from src.models.campus import Booking
 
 
-class BookingService(BookingServiceProtocol):
-    """Coordinates room booking operations against a booking index."""
+class BookingSystem:
+    """Coordinates room booking operations against a sorted booking structure."""
 
-    def __init__(self, booking_index: BookingIndex) -> None:
-        """Create the booking service with its index dependency."""
+    def __init__(self) -> None:
+        """Initialize booking system storage dependencies."""
         raise NotImplementedError
 
-    def create_booking(
-        self,
-        room_id: str,
-        event: Event,
-        start_time: datetime,
-        end_time: datetime,
-    ) -> Booking:
-        """Create a booking request for an event in a room."""
+    def add_booking(self, booking: Booking) -> None:
+        """Add a booking to the system."""
         raise NotImplementedError
 
-    def cancel_booking(self, booking_id: str) -> bool:
-        """Cancel an existing booking and return whether it was found."""
+    def remove_booking(self, booking_id: str) -> bool:
+        """Remove a booking by ID and return whether it was found."""
         raise NotImplementedError
 
-    def bookings_for_room(self, room_id: str) -> list[Booking]:
-        """Return bookings associated with one room."""
+    def get_bookings_in_range(self, start_time: Any, end_time: Any) -> list[Booking]:
+        """Return bookings with times inside the requested interval."""
         raise NotImplementedError
 
-    def is_room_available(
-        self,
-        room_id: str,
-        start_time: datetime,
-        end_time: datetime,
-    ) -> bool:
-        """Return whether a room is available during a time interval."""
+    def get_next_event(self) -> Booking | None:
+        """Return the next upcoming booking, or None when there are no bookings."""
+        raise NotImplementedError
+
+    def get_events_for_day(self, day: Any) -> list[Booking]:
+        """Return all bookings scheduled for the given day."""
         raise NotImplementedError

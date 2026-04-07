@@ -1,27 +1,23 @@
 """Priority queue skeleton for service requests."""
 
-from src.models.campus import ServiceRequest
+from typing import Any
 
 
 class ServicePriorityQueue:
-    """Priority queue for service requests."""
+    """Priority queue for campus service requests."""
 
     def __init__(self) -> None:
         """Initialize priority queue storage."""
         raise NotImplementedError
 
-    def enqueue(self, request: ServiceRequest) -> None:
-        """Add a service request to the queue."""
+    def enqueue(self, request: Any) -> None:
+        """Add a request to the priority queue."""
         raise NotImplementedError
 
-    def dequeue(self) -> ServiceRequest | None:
+    def dequeue(self) -> Any | None:
         """Remove and return the highest-priority request."""
         raise NotImplementedError
 
-    def peek(self) -> ServiceRequest | None:
-        """Return the highest-priority request without removing it."""
-        raise NotImplementedError
-
     def is_empty(self) -> bool:
-        """Return whether the queue has no requests."""
+        """Return whether the priority queue has no requests."""
         raise NotImplementedError
