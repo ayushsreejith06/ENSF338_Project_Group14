@@ -28,3 +28,10 @@ class LookupService:
     def size(self) -> int:
         """Return the number of stored items."""
         return self._index.size()
+
+    def load_items(self, items: list[dict]) -> None:
+        """Load multiple dictionary items into the lookup service by building_id."""
+        for item in items:
+            key = item.get("building_id")
+            if key is not None:
+                self.insert(key, item)
