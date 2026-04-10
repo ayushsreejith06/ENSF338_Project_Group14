@@ -32,21 +32,45 @@ def run_queue_system() -> None:
     print("\n=== Queue System ===")
     print("Queue system feature not integrated yet.")
 
-def print_integration_status() -> None:
-    """Print the current status of module integration."""
-    print()
-    print("Navigation module integration: pending")
-    print("Booking system integration: pending")
-    print("Queue system integration: pending")
+def print_menu() -> None:
+    """Print the main menu options."""
+    print("\n=== ENSF 338 Campus Navigation and Event Management System ===")
+    print("1. Lookup")
+    print("2. Navigation")
+    print("3. Booking")
+    print("4. Queue System")
+    print("0. Exit")
+
+
+def pause() -> None:
+    """Pause until the user is ready to continue."""
+    input("\nPress Enter to continue...")
 
 
 def main() -> None:
     """Main entry point for the project."""
-    print("=== ENSF 338 Campus Navigation and Event Management System ===")
-    print()
+while True:
+        print_menu()
+        choice = input("Enter choice: ").strip()
 
-    run_lookup()
-    print_integration_status()
+        if choice == "1":
+            run_lookup()
+            pause()
+        elif choice == "2":
+            run_navigation()
+            pause()
+        elif choice == "3":
+            run_booking()
+            pause()
+        elif choice == "4":
+            run_queue_system()
+            pause()
+        elif choice == "0":
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice. Try again.")
+            pause()
 
 
 if __name__ == "__main__":
