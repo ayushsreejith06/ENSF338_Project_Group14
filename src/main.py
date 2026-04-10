@@ -3,6 +3,7 @@ from src.features.navigation import NavigationManager
 from src.features.booking import BookingSystem
 from src.features.request_pipeline import RequestPipeline
 from src.io.seed_data import load_buildings_seed
+from src.structures.graph import Graph
 
 def run_lookup() -> None:
     """Run a basic lookup demo using shared building seed data."""
@@ -21,33 +22,64 @@ def run_navigation() -> None:
     """Run the navigation feature."""
     print("\n=== Navigation ===")
 
-    if NavigationManager is None:
-        print("Navigation module not available.")
-        return
+    try:
+        # Temporary placeholder graph (will be replaced later)
+        graph = Graph()
 
-    print("Navigation system loaded (implementation pending).")
+        nav = NavigationManager(graph)
+
+        # Example call structure (safe placeholder)
+        print("Navigation system initialized.")
+
+        # expected usage:
+        # path, cost = nav.navigate("ICT", "ENG")
+        # print("Path:", path)
+        # print("Cost:", cost)
+
+    except NotImplementedError:
+        print("Navigation system not implemented yet.")
+    except Exception as e:
+        print(f"Navigation error: {e}")
 
 
 def run_booking() -> None:
     """Run the booking feature."""
     print("\n=== Booking ===")
 
-    if BookingSystem is None:
-        print("Booking module not available.")
-        return
+    try:
+        booking_system = BookingSystem()
 
-    print("Booking system loaded (implementation pending).")
+        print("Booking system initialized.")
+
+        # Future expected usage:
+        # booking_system.add_booking(...)
+        # events = booking_system.get_events_for_day(...)
+        # print(events)
+
+    except NotImplementedError:
+        print("Booking system not implemented yet.")
+    except Exception as e:
+        print(f"Booking error: {e}")
 
 
 def run_queue_system() -> None:
     """Run the queue/request processing feature."""
     print("\n=== Queue System ===")
 
-    if RequestPipeline is None:
-        print("Queue system module not available.")
-        return
+    try:
+        pipeline = RequestPipeline()
 
-    print("Request pipeline loaded (implementation pending).")
+        print("Request pipeline initialized.")
+
+        # Future expected usage:
+        # pipeline.enqueue(...)
+        # result = pipeline.process_next()
+        # print(result)
+
+    except NotImplementedError:
+        print("Request pipeline not implemented yet.")
+    except Exception as e:
+        print(f"Queue system error: {e}")
 
 def print_menu() -> None:
     """Print the main menu options."""
