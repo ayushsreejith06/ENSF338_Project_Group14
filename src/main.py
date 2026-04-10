@@ -49,4 +49,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as error:
+        print("Application failed to start.")
+        print(f"Error: {error}")
