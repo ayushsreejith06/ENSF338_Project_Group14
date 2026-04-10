@@ -34,7 +34,15 @@ def run_lookup_demo() -> None:
 
 def main() -> None:
     """Main entry point for the project."""
+    print("=== ENSF 338 Campus Navigation and Event Management System ===")
+    print()
+
     run_lookup_demo()
+
+    print()
+    print("Navigation module integration: pending")
+    print("Booking system integration: pending")
+    print("Queue system integration: pending")
 
 
 if __name__ == "__main__":
