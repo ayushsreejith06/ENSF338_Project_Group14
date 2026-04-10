@@ -2,7 +2,33 @@
 
 from src.structures.graph import Graph
 
-
+# === EXPECTED OUTPUT / BEHAVIOR ===
+# Must provide shortest-path navigation between two locations.
+#
+# navigate(src, dst):
+# - Return shortest path as ordered list of node/building IDs
+#   Example:
+#       ["ICT", "ENG", "SCI"]
+#
+# - Return total path cost (distance or time)
+#   Example:
+#       12
+#
+# - Final output format should be close to:
+#       Path: ICT -> ENG -> SCI
+#       Cost: 12
+#
+#
+# undo():
+# - Reverts most recent navigation operation
+# - Return message describing the action completed:
+#   Example:
+#       "Reverted to previous location: ICT"
+#
+# Internal expectations:
+# - Graph-based implementation (adjacency list)
+# - Dijkstra’s algorithm for shortest path
+# - Stack used to track navigation history for undo
 class NavigationManager:
     """Coordinates Dijkstra navigation and route undo history."""
 
