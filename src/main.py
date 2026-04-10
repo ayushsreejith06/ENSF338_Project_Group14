@@ -1,6 +1,8 @@
 from src.features.lookup_service import LookupService
+from src.features.navigation import NavigationManager
+from src.features.booking import BookingSystem
+from src.features.request_pipeline import RequestPipeline
 from src.io.seed_data import load_buildings_seed
-
 
 def run_lookup() -> None:
     """Run a basic lookup demo using shared building seed data."""
@@ -18,19 +20,34 @@ def run_lookup() -> None:
 def run_navigation() -> None:
     """Run the navigation feature."""
     print("\n=== Navigation ===")
-    print("Navigation feature not integrated yet.")
+
+    if NavigationManager is None:
+        print("Navigation module not available.")
+        return
+
+    print("Navigation system loaded (implementation pending).")
 
 
 def run_booking() -> None:
     """Run the booking feature."""
     print("\n=== Booking ===")
-    print("Booking feature not integrated yet.")
+
+    if BookingSystem is None:
+        print("Booking module not available.")
+        return
+
+    print("Booking system loaded (implementation pending).")
 
 
 def run_queue_system() -> None:
     """Run the queue/request processing feature."""
     print("\n=== Queue System ===")
-    print("Queue system feature not integrated yet.")
+
+    if RequestPipeline is None:
+        print("Queue system module not available.")
+        return
+
+    print("Request pipeline loaded (implementation pending).")
 
 def print_menu() -> None:
     """Print the main menu options."""
