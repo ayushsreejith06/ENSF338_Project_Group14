@@ -2,34 +2,35 @@ from src.features.lookup_service import LookupService
 from src.io.seed_data import load_buildings_seed
 
 
-def run_lookup_demo() -> None:
+def run_lookup() -> None:
     """Run a basic lookup demo using shared building seed data."""
     service = LookupService()
     service.load_items(load_buildings_seed())
 
     print("=== Lookup Demo ===")
     print("Total loaded buildings:", service.size())
-    print()
+    print("ICT:", service.lookup("ICT"))
+    print("ENG:", service.lookup("ENG"))
+    print("XYZ:", service.lookup("XYZ"))
+    print("Delete GYM:", service.delete("GYM"))
+    print("GYM after delete:", service.lookup("GYM"))
+    
+def run_navigation() -> None:
+    """Run the navigation feature."""
+    print("\n=== Navigation ===")
+    print("Navigation feature not integrated yet.")
 
-    print("Lookup existing building: ICT")
-    ict = service.lookup("ICT")
-    print(ict)
-    print()
 
-    print("Lookup existing building: ENG")
-    eng = service.lookup("ENG")
-    print(eng)
-    print()
+def run_booking() -> None:
+    """Run the booking feature."""
+    print("\n=== Booking ===")
+    print("Booking feature not integrated yet.")
 
-    print("Lookup missing building: XYZ")
-    missing = service.lookup("XYZ")
-    print(missing)
-    print()
 
-    print("Delete existing building: GYM")
-    print(service.delete("GYM"))
-    print("Lookup GYM after delete:")
-    print(service.lookup("GYM"))
+def run_queue_system() -> None:
+    """Run the queue/request processing feature."""
+    print("\n=== Queue System ===")
+    print("Queue system feature not integrated yet.")
 
 def print_integration_status() -> None:
     """Print the current status of module integration."""
@@ -44,7 +45,7 @@ def main() -> None:
     print("=== ENSF 338 Campus Navigation and Event Management System ===")
     print()
 
-    run_lookup_demo()
+    run_lookup()
     print_integration_status()
 
 
