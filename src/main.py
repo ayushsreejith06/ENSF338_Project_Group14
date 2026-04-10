@@ -31,6 +31,13 @@ def run_lookup_demo() -> None:
     print("Lookup GYM after delete:")
     print(service.lookup("GYM"))
 
+def print_integration_status() -> None:
+    """Print the current status of module integration."""
+    print()
+    print("Navigation module integration: pending")
+    print("Booking system integration: pending")
+    print("Queue system integration: pending")
+
 
 def main() -> None:
     """Main entry point for the project."""
@@ -38,11 +45,7 @@ def main() -> None:
     print()
 
     run_lookup_demo()
-
-    print()
-    print("Navigation module integration: pending")
-    print("Booking system integration: pending")
-    print("Queue system integration: pending")
+    print_integration_status()
 
 
 if __name__ == "__main__":
