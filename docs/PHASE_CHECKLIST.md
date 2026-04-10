@@ -118,22 +118,22 @@ Do NOT move to the next phase unless the current one is fully working.
 ## Ayush – Lookup + Integration
 
 ### Phase 1 – Lookup Service
-- [ ] Implement insert
-- [ ] Implement lookup
-- [ ] Implement delete
-- [ ] Test existing + missing keys
+- [x] Implement insert
+- [x] Implement lookup
+- [x] Implement delete
+- [x] Test existing + missing keys
 
 ### Phase 2 – Data Setup
-- [ ] Create shared test data (buildings, etc.)
-- [ ] Ensure consistent formats
+- [x] Create shared test data (buildings, etc.)
+- [x] Ensure consistent formats
 
 ### Phase 3 – Integration Layer
-- [ ] Create main runner
+- [x] Create main runner
 - [ ] Connect navigation, booking, queues, lookup
 - [ ] Ensure imports work cleanly
 
 ### Phase 4 – Demo Runner
-- [ ] Create menu or run-all script
+- [x] Create menu or run-all script
 - [ ] Trigger all features from one place
 - [ ] Ensure everything runs without crashing
 
