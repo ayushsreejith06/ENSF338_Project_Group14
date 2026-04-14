@@ -6,6 +6,7 @@ but model classes must not import feature, structure, demo, or I/O modules.
 
 from dataclasses import dataclass, field
 from typing import Any
+from datetime import datetime
 
 
 @dataclass(slots=True)
@@ -37,6 +38,19 @@ class Booking:
     start_time: Any
     end_time: Any
     organizer: str
+    
+    def overlaps_with(self, other: 'Booking') -> bool:
+        """Check if this booking overlaps with another booking."""
+        if self.room_id != other.room_id:   # If not using the same room, no overlap
+            return False
+        
+        return not (self.end_time <= other.start_time or self.start_time >= other.end_time) #Check if one starts before another ends
+    
+    def is_in_time_range(self, start_range: datetime, end_range: datetime) -> bool:
+        """Check if booking falls within specified time range."""
+        # Booking is in range if it overlaps or contained within the range
+        return (self.start_time < end_range and self.end_time > start_range)
+
 
 
 @dataclass(slots=True)
