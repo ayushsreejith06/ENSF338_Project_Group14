@@ -1,4 +1,4 @@
-"""Internal stack skeleton for navigation undo history."""
+"""Internal stack implementation for navigation undo history."""
 
 
 class _NavigationHistory:
@@ -6,16 +6,24 @@ class _NavigationHistory:
 
     def __init__(self) -> None:
         """Initialize stack storage."""
-        raise NotImplementedError
+        self._routes: list[tuple[list[str], int]] = []
 
     def _push(self, route: tuple[list[str], int]) -> None:
         """Push a route result onto the history stack."""
-        raise NotImplementedError
+        self._routes.append(route)
 
     def _pop(self) -> tuple[list[str], int] | None:
         """Pop the most recent route, if any."""
-        raise NotImplementedError
+        if self._is_empty():
+            return None
+        return self._routes.pop()
+
+    def _peek(self) -> tuple[list[str], int] | None:
+        """Return the most recent route without removing it."""
+        if self._is_empty():
+            return None
+        return self._routes[-1]
 
     def _is_empty(self) -> bool:
         """Return whether the history stack is empty."""
-        raise NotImplementedError
+        return len(self._routes) == 0
