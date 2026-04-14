@@ -1,6 +1,6 @@
 from src.demo.demo_bookings import main as run_booking_demo
 from src.demo.demo_queues import main as run_queue_demo
-from src.demo.demo_runner import run_demo as run_navigation_demo
+from src.demo.demo_navigation import run_demo as run_navigation_demo
 from src.features.lookup_service import LookupService
 from src.io.seed_data import load_buildings_seed
 
