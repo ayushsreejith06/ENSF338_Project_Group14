@@ -2,6 +2,11 @@ from src.features.lookup_service import LookupService
 from src.features.navigation import NavigationManager
 from src.features.booking import BookingSystem
 from src.features.request_pipeline import RequestPipeline
+from src.demo.demo_queues import (
+    build_demo_requests,
+    demo_priority_queue,
+    demo_request_pipeline,
+)
 from src.io.seed_data import load_buildings_seed
 from src.structures.graph import Graph
 
@@ -67,17 +72,10 @@ def run_queue_system() -> None:
     print("\n=== Queue System ===")
 
     try:
-        pipeline = RequestPipeline()
-
-        print("Request pipeline initialized.")
-
-        # Future expected usage:
-        # pipeline.enqueue(...)
-        # result = pipeline.process_next()
-        # print(result)
-
-    except NotImplementedError:
-        print("Request pipeline not implemented yet.")
+        requests = build_demo_requests()
+        demo_request_pipeline(requests)
+        print()
+        demo_priority_queue(build_demo_requests())
     except Exception as e:
         print(f"Queue system error: {e}")
 
@@ -98,28 +96,28 @@ def pause() -> None:
 
 def main() -> None:
     """Main entry point for the project."""
-while True:
-        print_menu()
-        choice = input("Enter choice: ").strip()
+    while True:
+            print_menu()
+            choice = input("Enter choice: ").strip()
 
-        if choice == "1":
-            run_lookup()
-            pause()
-        elif choice == "2":
-            run_navigation()
-            pause()
-        elif choice == "3":
-            run_booking()
-            pause()
-        elif choice == "4":
-            run_queue_system()
-            pause()
-        elif choice == "0":
-            print("Exiting program.")
-            break
-        else:
-            print("Invalid choice. Try again.")
-            pause()
+            if choice == "1":
+                run_lookup()
+                pause()
+            elif choice == "2":
+                run_navigation()
+                pause()
+            elif choice == "3":
+                run_booking()
+                pause()
+            elif choice == "4":
+                run_queue_system()
+                pause()
+            elif choice == "0":
+                print("Exiting program.")
+                break
+            else:
+                print("Invalid choice. Try again.")
+                pause()
 
 
 if __name__ == "__main__":
