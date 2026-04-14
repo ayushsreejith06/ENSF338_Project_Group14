@@ -1,14 +1,13 @@
 """
 Booking demo / test script
 File: src/demo/demo_bookings.py
-Author: B
+Author: Rolanted
 """
 
 from datetime import datetime, date, timedelta
 
 from src.models.campus import Campus, Booking
 from src.features.booking_system import BookingSystem
-from src.features.booking_system_b import get_next_event, get_events_for_day
 
 
 def print_booking(booking: Booking) -> None:
@@ -125,7 +124,7 @@ def main() -> None:
         bookings_in_range
     )
 
-    next_event = get_next_event(booking_system)
+    next_event = booking_system.get_next_event()
     print("\nNEXT EVENT")
     print("==========")
     if next_event is None:
@@ -133,7 +132,7 @@ def main() -> None:
     else:
         print_booking(next_event)
 
-    day_events = get_events_for_day(booking_system, date(2026, 4, 15))
+    day_events = booking_system.get_events_for_day(date(2026, 4, 15))
     print_booking_list("EVENTS FOR 2026-04-15", day_events)
 
     removed = booking_system.remove_booking("B102")
