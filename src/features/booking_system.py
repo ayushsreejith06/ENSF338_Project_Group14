@@ -3,7 +3,7 @@ Booking System (src/features/booking_system.py)
 Author: Leo
 """
 
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional, List
 from pathlib import Path
 import bisect
@@ -104,7 +104,7 @@ class BookingSystem:
         """
         Get all bookings that occur within a specified time range.
         """
-        if start_time >= end_time:  # Invaild time range.
+        if start_time >= end_time:  # Invalid time range.
             return []
         
         start_idx = bisect.bisect_left(
@@ -130,3 +130,37 @@ class BookingSystem:
             booking for booking in self._sorted_bookings
             if booking.room_id == room_id
         ]
+
+    """
+    Booking System (src/features/booking_system.py)
+    Author: Rolanted
+    """
+
+    def get_next_event(self) -> Optional[Booking]:
+        """
+        Return the next relevant event based on the current time.
+
+        If an event is currently ongoing, it is returned.
+        Otherwise, the next future event is returned.
+        Returns None if there are no current or upcoming events.
+        """
+        now = datetime.now()
+
+        for booking in self._sorted_bookings:
+            if booking.end_time >= now:
+                return booking
+
+        return None
+    
+    def get_events_for_day(self, day: date) -> List[Booking]:
+        """
+        Return all bookings scheduled on the given day
+        in chronological order.
+        """
+        events_for_day: List[Booking] = []
+
+        for booking in self._sorted_bookings:
+            if booking.start_time.date() == day:
+                events_for_day.append(booking)
+
+        return events_for_day
