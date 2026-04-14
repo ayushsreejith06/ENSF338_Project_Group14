@@ -2,14 +2,14 @@
 Booking System (src/features/booking_system_b.py)
 Author: Rolanted
 
-Note: This is a continuation of booking_system.py file made by Leo.
-      This includes:
-      * next upcoming event
-      * events for a specific day
+Note: This is a continuation of the booking_system.py file made by Leo.
+This file includes:
+* next upcoming event
+* events for a specific day
 """
 
-from datetime import datetime
-from typing import Optional
+from datetime import datetime, date
+from typing import Optional, List
 
 from ..models.campus import Booking
 
@@ -30,4 +30,16 @@ def get_next_event(self) -> Optional[Booking]:
 
     return None
 
-# More codes here...
+
+def get_events_for_day(self, day: date) -> List[Booking]:
+    """
+    Return all bookings scheduled on the given day
+    in chronological order.
+    """
+    events_for_day: List[Booking] = []
+
+    for booking in self._sorted_bookings:
+        if booking.start_time.date() == day:
+            events_for_day.append(booking)
+
+    return events_for_day
