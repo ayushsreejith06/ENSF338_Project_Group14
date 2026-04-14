@@ -63,26 +63,50 @@ When the program runs, you will see a menu:
 
 The system is structured as a modular architecture where each component is implemented independently and integrated through a central application runner.
 
-- **Lookup Service**
-  - Provides fast key-based access to campus data
-  - Supports insert, lookup, and delete operations
-  - Uses a hash-based structure for efficient access
+* **Lookup Service**
 
-- **Navigation System**
-  - Uses a graph-based representation of the campus
-  - Computes shortest paths between buildings using Dijkstra’s algorithm
-  - Maintains navigation history with undo functionality
+  * Provides fast key-based access to campus data
+  * Supports insert, lookup, and delete operations
+  * Uses a hash-based structure for efficient access
 
-- **Booking System**
-  - Manages room and event scheduling
-  - Supports insertion, deletion, and time-based queries
-  - Maintains ordered access to upcoming events
+* **Navigation System**
 
-- **Request Pipeline**
-  - Processes incoming requests using FIFO and priority-based ordering
-  - Ensures correct processing order across multiple request types
+  * Uses a graph-based representation of the campus
+  * Computes shortest paths between buildings using Dijkstra’s algorithm
+  * Maintains navigation history with undo functionality
+
+* **Booking System**
+
+  * Manages room and event scheduling
+  * Supports insertion, deletion, and time-based queries
+  * Maintains ordered access to upcoming events
+  * Includes next-event retrieval and same-day event filtering
+  * Tested with large datasets (100+ bookings)
+
+* **Request Pipeline**
+
+  * Processes incoming requests using FIFO ordering
+  * Simulates handling of multiple sequential requests
+
+* **Priority Service Queue**
+
+  * Handles service requests based on urgency levels
+  * Supports Emergency, Standard, and Low priority handling
+  * Ensures correct dequeue order based on priority
 
 The system is designed so that each module interacts through clearly defined interfaces, allowing independent development and clean integration.
+
+---
+
+## Implemented Features
+
+* Shortest path navigation between campus buildings
+* Undo functionality for navigation history
+* Booking insertion, removal, and time-based queries
+* Next-event and day-based booking retrieval
+* Fast lookup for campus data (existing and missing keys)
+* FIFO request pipeline processing (20+ simulated requests)
+* Priority-based service queue handling
 
 ---
 
@@ -91,4 +115,4 @@ The system is designed so that each module interacts through clearly defined int
 * Ayush – Lookup + Integration
 * Rabi – Navigation + Undo
 * Rolanted – Booking System
-* Andrew – Request Pipeline
+* Andrew – Request Pipeline / Priority Queue
