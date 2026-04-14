@@ -1,21 +1,18 @@
 from src.demo.demo_bookings import main as run_booking_demo
 from src.demo.demo_queues import main as run_queue_demo
 from src.demo.demo_navigation import run_demo as run_navigation_demo
-from src.features.lookup_service import LookupService
+from src.demo.demo_lookup import main as run_lookup_demo
 from src.io.seed_data import load_buildings_seed
 
 def run_lookup() -> None:
     """Run a basic lookup demo using shared building seed data."""
-    service = LookupService()
-    service.load_items(load_buildings_seed())
 
-    print("=== Lookup Demo ===")
-    print("Total loaded buildings:", service.size())
-    print("ICT:", service.lookup("ICT"))
-    print("ENG:", service.lookup("ENG"))
-    print("XYZ:", service.lookup("XYZ"))
-    print("Delete GYM:", service.delete("GYM"))
-    print("GYM after delete:", service.lookup("GYM"))
+    print("=== Lookup ===")
+    try:
+        run_lookup_demo()
+    except Exception as e:
+        print(f"Lookup error: {e}")
+       
     
 def run_navigation() -> None:
     """Run the navigation feature."""
