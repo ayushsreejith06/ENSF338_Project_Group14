@@ -1,9 +1,8 @@
+from src.demo.demo_bookings import main as run_booking_demo
+from src.demo.demo_queues import main as run_queue_demo
+from src.demo.demo_runner import run_demo as run_navigation_demo
 from src.features.lookup_service import LookupService
-from src.features.navigation import NavigationManager
-from src.features.booking import BookingSystem
-from src.features.request_pipeline import RequestPipeline
 from src.io.seed_data import load_buildings_seed
-from src.structures.graph import Graph
 
 def run_lookup() -> None:
     """Run a basic lookup demo using shared building seed data."""
@@ -22,42 +21,18 @@ def run_navigation() -> None:
     """Run the navigation feature."""
     print("\n=== Navigation ===")
 
+    print("\n=== Navigation ===")
     try:
-        # Temporary placeholder graph (will be replaced later)
-        graph = Graph()
-
-        nav = NavigationManager(graph)
-
-        # Example call structure (safe placeholder)
-        print("Navigation system initialized.")
-
-        # expected usage:
-        # path, cost = nav.navigate("ICT", "ENG")
-        # print("Path:", path)
-        # print("Cost:", cost)
-
-    except NotImplementedError:
-        print("Navigation system not implemented yet.")
+        run_navigation_demo()
     except Exception as e:
         print(f"Navigation error: {e}")
-
 
 def run_booking() -> None:
     """Run the booking feature."""
     print("\n=== Booking ===")
 
     try:
-        booking_system = BookingSystem()
-
-        print("Booking system initialized.")
-
-        # Future expected usage:
-        # booking_system.add_booking(...)
-        # events = booking_system.get_events_for_day(...)
-        # print(events)
-
-    except NotImplementedError:
-        print("Booking system not implemented yet.")
+        run_booking_demo()
     except Exception as e:
         print(f"Booking error: {e}")
 
@@ -66,18 +41,9 @@ def run_queue_system() -> None:
     """Run the queue/request processing feature."""
     print("\n=== Queue System ===")
 
+    print("\n=== Queue System ===")
     try:
-        pipeline = RequestPipeline()
-
-        print("Request pipeline initialized.")
-
-        # Future expected usage:
-        # pipeline.enqueue(...)
-        # result = pipeline.process_next()
-        # print(result)
-
-    except NotImplementedError:
-        print("Request pipeline not implemented yet.")
+        run_queue_demo()
     except Exception as e:
         print(f"Queue system error: {e}")
 
@@ -98,28 +64,28 @@ def pause() -> None:
 
 def main() -> None:
     """Main entry point for the project."""
-while True:
-        print_menu()
-        choice = input("Enter choice: ").strip()
+    while True:
+            print_menu()
+            choice = input("Enter choice: ").strip()
 
-        if choice == "1":
-            run_lookup()
-            pause()
-        elif choice == "2":
-            run_navigation()
-            pause()
-        elif choice == "3":
-            run_booking()
-            pause()
-        elif choice == "4":
-            run_queue_system()
-            pause()
-        elif choice == "0":
-            print("Exiting program.")
-            break
-        else:
-            print("Invalid choice. Try again.")
-            pause()
+            if choice == "1":
+                run_lookup()
+                pause()
+            elif choice == "2":
+                run_navigation()
+                pause()
+            elif choice == "3":
+                run_booking()
+                pause()
+            elif choice == "4":
+                run_queue_system()
+                pause()
+            elif choice == "0":
+                print("Exiting program.")
+                break
+            else:
+                print("Invalid choice. Try again.")
+                pause()
 
 
 if __name__ == "__main__":
