@@ -22,6 +22,7 @@ def main() -> None:
 
     print("\nDELETE EXISTING KEY")
     print("===================")
+    print("GYM before delete:", service.lookup("GYM"))
     print("Delete GYM:", service.delete("GYM"))
     print("GYM after delete:", service.lookup("GYM"))
 
