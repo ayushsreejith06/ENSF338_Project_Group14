@@ -135,6 +135,8 @@ def main() -> None:
     day_events = booking_system.get_events_for_day(date(2026, 4, 15))
     print_booking_list("EVENTS FOR 2026-04-15", day_events)
 
+    print_booking_list("BOOKINGS BEFORE REMOVAL", booking_system.get_all_bookings())
+    
     removed = booking_system.remove_booking("B102")
     print("\nREMOVE BOOKING")
     print("==============")
