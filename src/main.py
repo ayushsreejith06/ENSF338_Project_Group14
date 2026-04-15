@@ -3,11 +3,11 @@ from src.demo.demo_queues import main as run_queue_demo
 from src.demo.demo_navigation import run_demo as run_navigation_demo
 from src.demo.demo_lookup import main as run_lookup_demo
 from src.io.seed_data import load_buildings_seed
+import os
 
 def run_lookup() -> None:
     """Run a basic lookup demo using shared building seed data."""
-
-    print("=== Lookup ===")
+    print("\n=== Lookup ===")
     try:
         run_lookup_demo()
     except Exception as e:
@@ -17,8 +17,6 @@ def run_lookup() -> None:
 def run_navigation() -> None:
     """Run the navigation feature."""
     print("\n=== Navigation ===")
-
-    print("\n=== Navigation ===")
     try:
         run_navigation_demo()
     except Exception as e:
@@ -27,7 +25,6 @@ def run_navigation() -> None:
 def run_booking() -> None:
     """Run the booking feature."""
     print("\n=== Booking ===")
-
     try:
         run_booking_demo()
     except Exception as e:
@@ -36,8 +33,6 @@ def run_booking() -> None:
 
 def run_queue_system() -> None:
     """Run the queue/request processing feature."""
-    print("\n=== Queue System ===")
-
     print("\n=== Queue System ===")
     try:
         run_queue_demo()
@@ -53,10 +48,14 @@ def print_menu() -> None:
     print("4. Queue System")
     print("0. Exit")
 
+def clear_screen() -> None:
+    """Clear the terminal screen."""
+    os.system("cls" if os.name == "nt" else "clear")
 
 def pause() -> None:
-    """Pause until the user is ready to continue."""
+    """Pause until the user is ready to continue then clear screen."""
     input("\nPress Enter to continue...")
+    clear_screen()
 
 
 def main() -> None:
